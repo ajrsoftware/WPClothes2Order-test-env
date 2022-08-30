@@ -1,16 +1,29 @@
 #!bin/bash
 
+WP_CONFIG=wp-config.php
+URL=http://localhost:8000
+TITLE=WPCLothes2Order-test-env
+ADMIN_USER=admin
+ADMIN_PASS=password
+ADMIN_EMAIL=test@test.com
+
+# If config exists
+
 # Install WP-CLI
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar;
 php wp-cli.phar --info;
 chmod +x wp-cli.phar;
 mv wp-cli.phar /usr/local/bin/wp;
 
-# Allow chance for MySQL to be ready
-sleep 10;
+# Allow chance for MySQL to be ready & wait for config to be generated
+until [ -f $WP_CONFIG ]
+do
+     echo "$WP_CONFIG not found, waiting for it to be generated..."
+done
+echo "$WP_CONFIG found..."
 
 # Setup WP & base admin user
-wp core install --url=http://localhost:8000 --title=WPCLothes2Order-test-env --admin_user=admin --admin_password=password --admin_email=test@test.com --color --allow-root;
+wp core install --url=$URL --title=$TITLE--admin_user=$ADMIN_USER --admin_password=$ADMIN_PASS --admin_email=$ADMIN_EMAIL --color --allow-root;
 
 # Skip WC setup wizard
 rm -r wp-content/mu-plugins;

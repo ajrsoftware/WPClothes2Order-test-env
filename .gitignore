@@ -1,3 +1,4 @@
+# https://theapache64.github.io/git-do-not-ignore/
 **/.DS_Store
 **.log
 .vscode
@@ -5,7 +6,4 @@
 vendor
 node_modules
 
-# https://theapache64.github.io/git-do-not-ignore/
-!app/
 app/*
-!app/.gitkeep
