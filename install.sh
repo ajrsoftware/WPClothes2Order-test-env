@@ -32,7 +32,7 @@ echo "$WP_CONFIG found...";
 
 # Setup WP & base admin user
 echo "Auto installing WordPress";
-wp core install --url=$URL --title=$TITLE--admin_user=$ADMIN_USER --admin_password=$ADMIN_PASS --admin_email=$ADMIN_EMAIL --color --allow-root;
+wp core install --url=$URL --title=$TITLE --admin_user=$ADMIN_USER --admin_password=$ADMIN_PASS --admin_email=$ADMIN_EMAIL --color --allow-root;
 
 # Update WP to latest stable
 echo "Updating WordPress to the latest stable build";
