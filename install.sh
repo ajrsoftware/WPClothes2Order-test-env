@@ -4,7 +4,7 @@
 
 WP_CONFIG=wp-config.php;
 URL=http://localhost:8000;
-TITLE=WPCLothes2Order-test-env;
+TITLE=WPClothes2Order-test-env;
 ADMIN_USER=admin;
 ADMIN_PASS=password;
 ADMIN_EMAIL=test@test.com;
