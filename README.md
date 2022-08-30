@@ -4,7 +4,7 @@
 
 -   Clone this repo
 -   Navigate into the root of the project
--   ENsure you have docker running
+-   Ensure you have docker running
 -   Run `sh quickstart.sh`
 
 This will setup a dockerized WordPress env on `http://localhost:8000` and clone down the WPClothes2Order plugin on the dev branch ready to go.
