@@ -26,6 +26,7 @@ mv wp-cli.phar /usr/local/bin/wp;
 until [ -f $WP_CONFIG ]
 do
      echo "$WP_CONFIG not found, waiting for it to be generated...";
+     sleep 5;
 done
 echo "$WP_CONFIG found...";
 
