@@ -1,18 +1,17 @@
 # WPClothes2Order testing enviroment
 
-Due to the nature of this project & the main plugin being held in a seperate repo, alot of the setup is manual.
+## Getting started
 
--   Start of development - `docker compose up`
+-   Clone this repo
+-   Navigate into the root of the project
+-   ENsure you have docker running
+-   Run `sh quickstart.sh`
 
--   Visit `http://localhost:8000`
+This will setup a dockerized WordPress env on `http://localhost:8000` and clone down the WPClothes2Order plugin on the dev branch ready to go.
 
--   Use the info shown in `.github/assets/env-credentials.png` for consistency
+See the `quickstart.sh` for more detail.
 
--   Download & unzip the plugin from `https://github.com/AshleyRedman/WPClothes2Order` on the dev branch to the `app/wp-content/plugins` dir
+## Development
 
--   In the WP admin UI, activate the plugin
-
--   Reminder, this is a WooCommerce extention, not stand alone, so WC is required. No version specified yet.
-
-The command `docker compose down` removes the containers and default network, but preserves your WordPress database.
-The command `docker compose down --volumes` removes the containers, default network, and the WordPress database.
+This enviroment is simply just for development/testing. Once you have completed the above steps, navigate to `cd app/wp-content/plugins/WPClothes2Order` and start.
+As this is a sub git directory, the plugin files are what can be checked in and submit for PR.
