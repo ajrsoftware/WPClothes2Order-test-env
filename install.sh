@@ -1,5 +1,7 @@
 #!bin/bash
 
+# https://developer.wordpress.org/cli/commands/
+
 WP_CONFIG=wp-config.php;
 URL=http://localhost:8000;
 TITLE=WPCLothes2Order-test-env;
@@ -7,20 +9,16 @@ ADMIN_USER=admin;
 ADMIN_PASS=password;
 ADMIN_EMAIL=test@test.com;
 
-# If config exists
-
-if [ -f $WP_CONFIG ]; then
-  echo "$WP_CONFIG already exsists! Please remove the `app` directroy & try again.";
-  echo "Warning! This action will setup a fresh test env installation";
-  exit 0;
-fi
-
 # Install WP-CLI
 echo "Installing the WP CLI";
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar;
 php wp-cli.phar --info;
 chmod +x wp-cli.phar;
 mv wp-cli.phar /usr/local/bin/wp;
+
+# Update WP to latest stable
+echo "Updating WP CLI to the latest stable build";
+wp cli update --stable --yes --allow-root;
 
 # Allow chance for MySQL to be ready & wait for config to be generated
 until [ -f $WP_CONFIG ]
@@ -34,9 +32,9 @@ echo "$WP_CONFIG found...";
 echo "Auto installing WordPress";
 wp core install --url=$URL --title=$TITLE --admin_user=$ADMIN_USER --admin_password=$ADMIN_PASS --admin_email=$ADMIN_EMAIL --color --allow-root;
 
-# Update WP to latest stable
+# Update WordPress core version
 echo "Updating WordPress to the latest stable build";
-wp cli update --stable --yes --allow-root;
+wp core update --allow-root
 
 # Set correct permalink strucutre
 echo "Setting correct permalink structure";
