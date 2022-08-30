@@ -92,12 +92,6 @@ echo "Installing Woocommerce";
 echo "------------------------------------------------------------------------------------------------------------"
 wp plugin install woocommerce --force --activate --color --allow-root;
 
-# Install WPClothes2Order plugin from dev branch of repo
-# echo "------------------------------------------------------------------------------------------------------------"
-# echo "Installing & activating the WPCLothes2Order plugin - dev build";
-# echo "------------------------------------------------------------------------------------------------------------"
-# wp plugin install https://github.com/AshleyRedman/WPClothes2Order/archive/refs/heads/dev.zip --force --activate --color --allow-root;
-
 echo "------------------------------------------------------------------------------------------------------------"
 echo "Pulling latest dev build of WPCLothes2Order plugin";
 echo "------------------------------------------------------------------------------------------------------------"
