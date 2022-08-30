@@ -7,6 +7,7 @@ if [ -d "app" ]; then
   exit 0;
 fi
 
+docker compose down;
 docker compose down --volumes;
-docker compose up -d
-docker exec -i wordpress sh < install.sh
+docker compose up -d;
+docker exec -i wordpress sh < install.sh;

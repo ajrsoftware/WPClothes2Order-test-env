@@ -8,6 +8,20 @@ TITLE=WPCLothes2Order-test-env;
 ADMIN_USER=admin;
 ADMIN_PASS=password;
 ADMIN_EMAIL=test@test.com;
+C20_PLUGIN=WPClothes2Order;
+REPO_USER=AshleyRedman;
+
+# Update local packages & install git
+echo "------------------------------------------------------------------------------------------------------------"
+echo "Updating & installing local packages";
+echo "------------------------------------------------------------------------------------------------------------"
+apt-get update;
+apt-get upgrade -y;
+
+echo "------------------------------------------------------------------------------------------------------------"
+echo "Installing git";
+echo "------------------------------------------------------------------------------------------------------------"
+apt-get install -y git;
 
 # Install WP-CLI
 echo "------------------------------------------------------------------------------------------------------------"
@@ -46,7 +60,7 @@ wp core install --url=$URL --title=$TITLE --admin_user=$ADMIN_USER --admin_passw
 echo "------------------------------------------------------------------------------------------------------------"
 echo "Updating WordPress to the latest stable build";
 echo "------------------------------------------------------------------------------------------------------------"
-wp core update --color --allow-root
+wp core update --color --allow-root;
 
 # Set correct permalink strucutre
 echo "------------------------------------------------------------------------------------------------------------"
@@ -79,10 +93,18 @@ echo "--------------------------------------------------------------------------
 wp plugin install woocommerce --force --activate --color --allow-root;
 
 # Install WPClothes2Order plugin from dev branch of repo
+# echo "------------------------------------------------------------------------------------------------------------"
+# echo "Installing & activating the WPCLothes2Order plugin - dev build";
+# echo "------------------------------------------------------------------------------------------------------------"
+# wp plugin install https://github.com/AshleyRedman/WPClothes2Order/archive/refs/heads/dev.zip --force --activate --color --allow-root;
+
 echo "------------------------------------------------------------------------------------------------------------"
-echo "Installing & activating the WPCLothes2Order plugin - dev build";
+echo "Pulling latest dev build of WPCLothes2Order plugin";
 echo "------------------------------------------------------------------------------------------------------------"
-wp plugin install https://github.com/AshleyRedman/WPClothes2Order/archive/refs/heads/dev.zip --force --activate --color --allow-root;
+git clone https://github.com/$REPO_USER/$C20_PLUGIN.git wp-content/plugins/$C20_PLUGIN;
+cd wp-content/plugins/$C20_PLUGIN;
+git checkout dev;
+cd ../../../;
 
 echo "------------------------------------------------------------------------------------------------------------"
 echo "Environment ready.";
