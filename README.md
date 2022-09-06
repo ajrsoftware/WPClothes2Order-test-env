@@ -3,7 +3,7 @@
 ## Assumptions
 
 -   This guide is for MacOS & Linux users, I currently do not use a windows machine, so a PR on this README on how to get started with a windows setup would be appreciated
--   We assume you have composer on your system, for more information, please (see here)[https://getcomposer.org/doc/00-intro.md] on how to get setup with composer.
+-   We assume you have composer on your system, for more information, please [see here](https://getcomposer.org/doc/00-intro.md) on how to get setup with composer.
 
 ## Getting started
 
