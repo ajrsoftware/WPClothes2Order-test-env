@@ -36,4 +36,4 @@ Once you log into the local site, you will see WooCommerce is activated & the WP
 
 You're now ready to go!
 
-For more information, please contact me at `ash.redman@outlook.com` or for a faster response, direct message me on twitter at `@AJ_Redman`.
+If you spot a bug with this setup or have any questions, please open an issue on this project or use (this link)[https://github.com/AshleyRedman/WPClothes2Order-test-env/issues].
