@@ -32,13 +32,11 @@ php wp-cli.phar --info;
 chmod +x wp-cli.phar;
 mv wp-cli.phar /usr/local/bin/wp;
 
-
 # Update WP to latest stable
 echo "------------------------------------------------------------------------------------------------------------"
 echo "Updating WP CLI to the latest stable build";
 echo "------------------------------------------------------------------------------------------------------------"
 wp cli update --stable --yes --color --allow-root;
-
 
 # Allow chance for MySQL to be ready & wait for config to be generated
 echo "------------------------------------------------------------------------------------------------------------"
@@ -75,9 +73,18 @@ echo "--------------------------------------------------------------------------
 rm -r wp-content/mu-plugins;
 mkdir wp-content/mu-plugins;
 
+# Setup any mu-plugins
+echo "------------------------------------------------------------------------------------------------------------"
+echo "Setting up must use plugins";
+echo "------------------------------------------------------------------------------------------------------------"
 # Skip WC setup wizard
 touch wp-content/mu-plugins/env.php;
-echo '<?php add_filter("woocommerce_prevent_automatic_wizard_redirect", "__return_true" );' >> wp-content/mu-plugins/env.php;
+echo "<?php add_filter('woocommerce_prevent_automatic_wizard_redirect', '__return_true' );" >> wp-content/mu-plugins/env.php;
+
+# Install the spatie ray WP plugin, see https://spatie.be/docs/ray/v1/installation-in-your-project/wordpress
+git clone https://github.com/spatie/wordpress-ray.git wp-content/mu-plugins/wordpress-ray;
+touch wp-content/mu-plugins/ray-loader.php;
+echo "<?php require WPMU_PLUGIN_DIR.'/wordpress-ray/wp-ray.php';" >> wp-content/mu-plugins/ray-loader.php;
 
 # Remove plugins that come with WP
 echo "------------------------------------------------------------------------------------------------------------"
@@ -92,6 +99,7 @@ echo "Installing Woocommerce";
 echo "------------------------------------------------------------------------------------------------------------"
 wp plugin install woocommerce --force --activate --color --allow-root;
 
+# Pull the wpc2o plugin and set to the dev branch ready to branched off
 echo "------------------------------------------------------------------------------------------------------------"
 echo "Pulling latest dev build of WPCLothes2Order plugin";
 echo "------------------------------------------------------------------------------------------------------------"
