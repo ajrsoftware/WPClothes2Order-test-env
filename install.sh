@@ -77,9 +77,13 @@ mkdir wp-content/mu-plugins;
 echo "------------------------------------------------------------------------------------------------------------"
 echo "Setting up must use plugins";
 echo "------------------------------------------------------------------------------------------------------------"
-# Skip WC setup wizard
+# Define constants
 touch wp-content/mu-plugins/env.php;
-echo "<?php add_filter('woocommerce_prevent_automatic_wizard_redirect', '__return_true' );" >> wp-content/mu-plugins/env.php;
+echo "<?php define('WP_ENVIRONMENT_TYPE', 'local');" >> wp-content/mu-plugins/env.php;
+
+# Skip WC setup wizard
+touch wp-content/mu-plugins/wc.php;
+echo "<?php add_filter('woocommerce_prevent_automatic_wizard_redirect', '__return_true');" >> wp-content/mu-plugins/wc.php;
 
 # Install the spatie ray WP plugin, see https://spatie.be/docs/ray/v1/installation-in-your-project/wordpress
 git clone https://github.com/spatie/wordpress-ray.git wp-content/mu-plugins/wordpress-ray;
@@ -101,7 +105,7 @@ wp plugin install woocommerce --force --activate --color --allow-root;
 
 # Pull the wpc2o plugin and set to the dev branch ready to branched off
 echo "------------------------------------------------------------------------------------------------------------"
-echo "Pulling latest dev build of WPCLothes2Order plugin";
+echo "Pulling latest dev build of WPClothes2Order plugin";
 echo "------------------------------------------------------------------------------------------------------------"
 git clone https://github.com/$REPO_USER/$C20_PLUGIN.git wp-content/plugins/$C20_PLUGIN;
 cd wp-content/plugins/$C20_PLUGIN;
