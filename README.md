@@ -1,5 +1,10 @@
 # WPClothes2Order testing environment
 
+## Assumptions
+
+-   This guide is for MacOS & Linux users, I currently do not use a windows machine, so a PR on this README on how to get started with a windows setup would be appreciated
+-   We assume you have composer on your system, for more information, please (see here)[https://getcomposer.org/doc/00-intro.md] on how to get setup with composer.
+
 ## Getting started
 
 -   Clone this repo
@@ -22,5 +27,13 @@ Password: admin
 
 -   Within this environment, there is an container running mailhog on `http://localhost:1025`, here we can test out going mail.
 -   Within this environment, there is a container running adminer on `http://localhost:8080`, here we can view & edit the database.
+
+Once you log into the local site, you will see WooCommerce is activated & the WPC2O plugin is not. This is because it is running the dev build, so:
+
+-   From this projects root, `cd app/wp-content/plugins/WPClothes2Order`
+-   Run `composer install`
+-   Return to the plugin screen & activate the plugin.
+
+You're now ready to go!
 
 For more information, please contact me at `ash.redman@outlook.com` or for a faster response, direct message me on twitter at `@AJ_Redman`.
