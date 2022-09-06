@@ -31,6 +31,8 @@ services:
             - WORDPRESS_DB_NAME=wordpress
         volumes:
             - ./app/:/var/www/html/
+        extra_hosts: # <-- does no harm
+            - "host.docker.internal:host-gateway" # <-- does no harm
 
     adminer:
         container_name: adminer
