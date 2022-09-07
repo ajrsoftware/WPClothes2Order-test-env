@@ -1,5 +1,7 @@
 # WPClothes2Order testing environment
 
+If you want to test the [WPClothes2Order](https://github.com/AshleyRedman/WPClothes2Order) plugin in isolation easily, use this package.
+
 ## Assumptions
 
 -   This guide is for MacOS & Linux users, I currently do not use a windows machine, so a PR on this README on how to get started with a windows setup would be appreciated.
