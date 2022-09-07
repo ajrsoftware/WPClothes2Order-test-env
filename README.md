@@ -2,38 +2,53 @@
 
 ## Assumptions
 
--   This guide is for MacOS & Linux users, I currently do not use a windows machine, so a PR on this README on how to get started with a windows setup would be appreciated
--   We assume you have composer on your system, for more information, please [see here](https://getcomposer.org/doc/00-intro.md) on how to get setup with composer.
+-   This guide is for MacOS & Linux users, I currently do not use a windows machine, so a PR on this README on how to get started with a windows setup would be appreciated.
+
+- We assume you have [composer](https://getcomposer.org/doc/00-intro.md) installed.
 
 ## Getting started
 
--   Clone this repo
--   Navigate into the root of the project
--   Ensure you have docker running
--   Run `sh quickstart.sh`
+```bash
+~/$ git clone git@github.com:AshleyRedman/WPClothes2Order-test-env.git
+~/$ cd WPClothes2Order-test-env
+~/WPClothes2Order-test-env$ sh quickstart.sh
+```
 
 This will setup a dockerized WordPress env on `http://localhost:8000` and clone down the WPClothes2Order plugin on the dev branch ready to go.
 See the `quickstart.sh` for more detail.
+
+Once setup, you will need to install the packages for the `WPClothes2Order` plugin.
+
+```bash
+~/WPClothes2Order-test-env/app/wp-content/plugins/WPClothes2Order$ compose install
+```
 
 ## Development
 
 This environment is simply just for development/testing. Once you have completed the above steps, navigate to `cd app/wp-content/plugins/WPClothes2Order` and start.
 As this is a sub git directory, the plugin files are what can be checked in and submit for PR.
 
-Once you navigate to `http://localhost:8000`, login by going to `http://localhost:8000/wp-login.php`.
-Credentials:
+You can login to the dashboard, via url `http://localhost:8000/wp-login.php`,
+
+```
 Username: admin
-Password: admin
+Password: password
+```
 
--   Within this environment, there is an container running mailhog on `http://localhost:1025`, here we can test out going mail.
--   Within this environment, there is a container running adminer on `http://localhost:8080`, here we can view & edit the database.
+You can view the database using [adminer](https://www.adminer.org/), via url `http://localhost:8080`.
 
-Once you log into the local site, you will see WooCommerce is activated & the WPC2O plugin is not. This is because it is running the dev build, so:
+![Adminer screenshot](./assets/adminer.png)
 
--   From this projects root, `cd app/wp-content/plugins/WPClothes2Order`
--   Run `composer install`
--   Return to the plugin screen & activate the plugin.
+```
+System: MySQL
+Server: db
+Username: wordpress
+Password: wordpress
+Database: wordpress
+```
 
-You're now ready to go!
+This application uses [mailhog](https://github.com/mailhog/MailHog) as am email client, running on port `1025`. The UI for this can be accessed via `http://localhost:8025`.
 
-If you spot a bug with this setup or have any questions, please open an issue on this project or use [this link](https://github.com/AshleyRedman/WPClothes2Order-test-env/issues).
+![Mailhog screenshot](./assets/mailhog.png)
+
+If you spot a bug with this setup or have any questions, please open an [issue](https://github.com/AshleyRedman/WPClothes2Order-test-env/issues).
