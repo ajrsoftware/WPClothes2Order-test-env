@@ -22,7 +22,7 @@ See the `quickstart.sh` for more detail.
 Once setup, you will need to install the packages for the `WPClothes2Order` plugin.
 
 ```bash
-~/WPClothes2Order-test-env/app/wp-content/plugins/WPClothes2Order$ compose install
+~/WPClothes2Order-test-env/app/wp-content/plugins/WPClothes2Order$ composer install
 ```
 
 ## Development
